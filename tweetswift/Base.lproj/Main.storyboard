@@ -55,21 +55,91 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DDt-ov-oYX">
+                                                    <rect key="frame" x="85" y="111" width="71" height="17"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="8" id="Vw3-Sp-NSe"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="16" id="YVM-aH-Nib"/>
+                                                        <constraint firstAttribute="width" constant="8" id="l5C-xb-23O"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="16" id="lsa-VO-XsC"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button" image="reply">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <state key="selected" image="reply_hover"/>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="Vw3-Sp-NSe"/>
+                                                            <exclude reference="l5C-xb-23O"/>
+                                                        </mask>
+                                                    </variation>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Tb-fo-e0H">
+                                                    <rect key="frame" x="178" y="111" width="71" height="17"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="8" id="4XL-QJ-n3Y"/>
+                                                        <constraint firstAttribute="width" constant="8" id="AhV-3G-u6g"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="16" id="DDK-ri-Owx"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="16" id="la7-ST-7xY"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button" image="retweet">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <state key="selected" image="retweet_hover"/>
+                                                    <state key="highlighted" image="retweet_on"/>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="4XL-QJ-n3Y"/>
+                                                            <exclude reference="AhV-3G-u6g"/>
+                                                        </mask>
+                                                    </variation>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XDI-KI-oDX">
+                                                    <rect key="frame" x="271" y="111" width="71" height="17"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="16" id="3V7-AX-WA7"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="16" id="FvS-9r-stM"/>
+                                                        <constraint firstAttribute="width" constant="8" id="YOq-3N-fdk"/>
+                                                        <constraint firstAttribute="height" constant="8" id="oNx-ta-sAx"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button" image="favorite">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <state key="selected" image="favorite_hover"/>
+                                                    <state key="highlighted" image="favorite_on"/>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="oNx-ta-sAx"/>
+                                                            <exclude reference="YOq-3N-fdk"/>
+                                                        </mask>
+                                                    </variation>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailingMargin" secondItem="Ooe-uP-xvK" secondAttribute="trailing" constant="40" id="14i-HH-d3P"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="DDt-ov-oYX" secondAttribute="bottom" constant="3" id="4IP-xH-oAJ"/>
+                                                <constraint firstItem="Ooe-uP-xvK" firstAttribute="leading" secondItem="DDt-ov-oYX" secondAttribute="leading" id="6wg-2U-dqF"/>
+                                                <constraint firstItem="XDI-KI-oDX" firstAttribute="top" secondItem="9Tb-fo-e0H" secondAttribute="top" id="DPX-Vj-YQY"/>
                                                 <constraint firstItem="ulQ-Ar-zzU" firstAttribute="top" secondItem="w9u-L8-MTd" secondAttribute="topMargin" constant="3" id="S5S-Wn-NDR"/>
+                                                <constraint firstItem="DDt-ov-oYX" firstAttribute="width" secondItem="9Tb-fo-e0H" secondAttribute="width" id="TTW-VJ-M2a"/>
                                                 <constraint firstItem="Ooe-uP-xvK" firstAttribute="top" secondItem="w4d-p2-Xg7" secondAttribute="bottom" constant="3" id="YXR-Fz-tLw"/>
+                                                <constraint firstItem="XDI-KI-oDX" firstAttribute="height" secondItem="9Tb-fo-e0H" secondAttribute="height" id="Zhf-MA-GHV"/>
+                                                <constraint firstItem="9Tb-fo-e0H" firstAttribute="leading" secondItem="DDt-ov-oYX" secondAttribute="trailing" constant="22" id="bLH-Rx-Znm"/>
                                                 <constraint firstItem="w4d-p2-Xg7" firstAttribute="top" secondItem="ulQ-Ar-zzU" secondAttribute="top" id="fae-GD-r9i"/>
                                                 <constraint firstItem="w4d-p2-Xg7" firstAttribute="leading" secondItem="ulQ-Ar-zzU" secondAttribute="trailing" constant="5" id="gvX-0j-TlE"/>
                                                 <constraint firstItem="KjG-fN-eBO" firstAttribute="top" secondItem="Ooe-uP-xvK" secondAttribute="top" id="hUd-1n-2CD"/>
                                                 <constraint firstItem="w4d-p2-Xg7" firstAttribute="top" secondItem="ulQ-Ar-zzU" secondAttribute="top" id="kpY-01-UPW"/>
                                                 <constraint firstItem="KjG-fN-eBO" firstAttribute="leading" secondItem="w9u-L8-MTd" secondAttribute="leadingMargin" constant="-8" id="l4L-cr-eKx"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="w4d-p2-Xg7" secondAttribute="trailing" constant="40" id="lPO-QL-aP2"/>
+                                                <constraint firstItem="XDI-KI-oDX" firstAttribute="leading" secondItem="9Tb-fo-e0H" secondAttribute="trailing" constant="22" id="m2T-1B-hak"/>
+                                                <constraint firstItem="DDt-ov-oYX" firstAttribute="top" secondItem="Ooe-uP-xvK" secondAttribute="bottom" constant="3" id="oXw-VR-5iM"/>
                                                 <constraint firstItem="Ooe-uP-xvK" firstAttribute="leading" secondItem="KjG-fN-eBO" secondAttribute="trailing" constant="5" id="q5J-Vl-yVx"/>
+                                                <constraint firstItem="DDt-ov-oYX" firstAttribute="height" secondItem="9Tb-fo-e0H" secondAttribute="height" id="t1F-OK-SzM"/>
                                                 <constraint firstItem="KjG-fN-eBO" firstAttribute="top" secondItem="ulQ-Ar-zzU" secondAttribute="bottom" constant="3" id="tZK-jD-VSE"/>
+                                                <constraint firstItem="XDI-KI-oDX" firstAttribute="width" secondItem="9Tb-fo-e0H" secondAttribute="width" id="tmo-qD-ls6"/>
                                                 <constraint firstItem="w4d-p2-Xg7" firstAttribute="height" secondItem="ulQ-Ar-zzU" secondAttribute="height" id="u7k-fp-DJJ"/>
                                                 <constraint firstItem="KjG-fN-eBO" firstAttribute="trailing" secondItem="ulQ-Ar-zzU" secondAttribute="trailing" id="xEe-0u-JGz"/>
+                                                <constraint firstItem="DDt-ov-oYX" firstAttribute="top" secondItem="9Tb-fo-e0H" secondAttribute="top" id="xrt-1I-qdX"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
@@ -93,7 +163,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1152" y="387"/>
+            <point key="canvasLocation" x="1152" y="386"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="z3M-EL-2Tv">
@@ -168,4 +238,14 @@
             <point key="canvasLocation" x="353" y="1048"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="favorite" width="16" height="16"/>
+        <image name="favorite_hover" width="16" height="16"/>
+        <image name="favorite_on" width="16" height="16"/>
+        <image name="reply" width="16" height="16"/>
+        <image name="reply_hover" width="16" height="16"/>
+        <image name="retweet" width="16" height="16"/>
+        <image name="retweet_hover" width="16" height="16"/>
+        <image name="retweet_on" width="16" height="16"/>
+    </resources>
 </document>
