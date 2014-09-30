@@ -20,6 +20,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Do any additional setup after loading the view.
         TwitterClient.sharedInstance.homeTimelineWithParams(nil, completion: { (tweets, error) -> () in
             self.tweets = tweets
+            self.tweetsTable.reloadData()
         })
     }
 
@@ -66,7 +67,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let thumbnail: UIImageView = cell.viewWithTag(101) as UIImageView
         let nameLabel: UILabel = cell.viewWithTag(102) as UILabel
 
-        thumbnail.sd_setImageWithURL(NSURL(tweet.user!.profileImageUrl))
+        thumbnail.sd_setImageWithURL(NSURL(string: tweet.user!.profileImageUrl!))
         nameLabel.text = tweet.text
         
         return cell
