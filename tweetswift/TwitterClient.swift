@@ -81,5 +81,23 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
         })
     }
 
-
+    func nativeRetweet(id_str: String, completion: (error: NSError?) -> ()) {
+        POST("1.1/statuses/retweet/\(id_str).json", parameters: NSDictionary(), success: {
+            (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+            completion(error: nil)
+            }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                println("TODO error: \(operation)")
+        })
+    }
+    
+    func favTweet(id_str: String, completion: (error: NSError?) -> ()) {
+        POST("1.1/favorites/create.json", parameters: ["id":id_str], success: {
+            (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+            completion(error: nil)
+            }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                println("TODO error: \(operation)")
+        })
+    }
+    
+    
 }

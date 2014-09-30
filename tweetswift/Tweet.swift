@@ -15,6 +15,7 @@ class Tweet: NSObject {
     var createdAt: NSDate?
     var retweeted = false
     var retweeting_user: User?
+    var id_str: String?
     
     
     init(json_dict: NSDictionary) {
@@ -30,6 +31,7 @@ class Tweet: NSObject {
         user = User(dictionary: dictionary["user"] as NSDictionary)
         text = dictionary["text"] as? String
         createdAtString = dictionary["created_at"] as? String
+        id_str = dictionary["id_str"] as? String
         
         var formatter = NSDateFormatter()
         formatter.dateFormat = "EEE MMM d HH:mm:ss Z y"
@@ -51,7 +53,7 @@ class Tweet: NSObject {
     }
     
     var dateLabelText: String {
-        return "\(createdAtString!)"
+        return createdAt!.prettyTimestampSinceNow()!
     }
     
 }

@@ -39,16 +39,30 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     @IBAction func replyAction(sender: AnyObject) {
+        println("in reply")
+        self.performSegueWithIdentifier("composeSegue", sender: self)
     }
     
     @IBAction func retweetAction(sender: AnyObject) {
+        println("in retweet")
+        var clickedsuper = sender.superview as UIView!
+        var clickedCell = clickedsuper.superview as UITableViewCell!
+        var indexPath = self.tweetsTable.indexPathForCell(clickedCell) as NSIndexPath!
+        var id_str = tweets![indexPath.row].id_str!
+        TwitterClient.sharedInstance.nativeRetweet(id_str) { (error) -> () in
+            println("Retweeted!")
+        }
+        
     }
     
     @IBAction func favoriteAction(sender: AnyObject) {
         var clickedsuper = sender.superview as UIView!
         var clickedCell = clickedsuper.superview as UITableViewCell!
         var indexPath = self.tweetsTable.indexPathForCell(clickedCell) as NSIndexPath!
-        println("Favorited \(tweets![indexPath.row].user!.name)")
+        var id_str = tweets![indexPath.row].id_str!
+        TwitterClient.sharedInstance.favTweet(id_str) { (error) -> () in
+            println("Favorited!")
+        }
     }
     
     /*
@@ -82,13 +96,14 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         var cell = opcell!
         let tweet = tweets![indexPath.row]
         let thumbnail: UIImageView = cell.viewWithTag(101) as UIImageView
-        let nameLabel: UILabel = cell.viewWithTag(102) as UILabel
+        let nameLabel = cell.viewWithTag(102) as TTTAttributedLabel
         let userLabel: UILabel = cell.viewWithTag(103) as UILabel
         let dateLabel: UILabel = cell.viewWithTag(104) as UILabel
         let retweetedSymbol: UIImageView = cell.viewWithTag(201) as UIImageView
         let retweetedLabel: UILabel = cell.viewWithTag(202) as UILabel
         
         thumbnail.sd_setImageWithURL(NSURL(string: tweet.user!.profileImageUrl!))
+        nameLabel.enabledTextCheckingTypes = NSTextCheckingAllSystemTypes
         nameLabel.text = tweet.text
         userLabel.text = tweet.userLabelText
         dateLabel.text = tweet.dateLabelText
@@ -98,6 +113,8 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         } else {
             retweetedSymbol.hidden = true
             retweetedLabel.hidden = true
+            retweetedSymbol.removeConstraints(retweetedSymbol.constraints())
+            retweetedLabel.removeConstraints(retweetedLabel.constraints())
         }
         
         
