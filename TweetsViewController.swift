@@ -66,9 +66,13 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let tweet = tweets![indexPath.row]
         let thumbnail: UIImageView = cell.viewWithTag(101) as UIImageView
         let nameLabel: UILabel = cell.viewWithTag(102) as UILabel
-
+        let userLabel: UILabel = cell.viewWithTag(103) as UILabel
+        let dateLabel: UILabel = cell.viewWithTag(104) as UILabel
+        
         thumbnail.sd_setImageWithURL(NSURL(string: tweet.user!.profileImageUrl!))
         nameLabel.text = tweet.text
+        userLabel.text = tweet.userLabelText
+        dateLabel.text = tweet.dateLabelText
         
         return cell
     }

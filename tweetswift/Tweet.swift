@@ -34,5 +34,12 @@ class Tweet: NSObject {
         return tweets
     }
     
+    var userLabelText: String {
+        return "\(self.user!.name!) @\(self.user!.screenname!)"
+    }
+    
+    var dateLabelText: String {
+        return "\(createdAtString!)"
+    }
     
 }
