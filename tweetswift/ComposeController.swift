@@ -11,17 +11,33 @@ import UIKit
 class ComposeController: UIViewController {
 
     @IBOutlet weak var composeText: UITextField!
+    var origTweet: Tweet?
+    
     
     @IBAction func postTweetAction(sender: AnyObject) {
-        TwitterClient.sharedInstance.postTweetWithParams(["status":self.composeText.text], completion: { (error) -> () in
+        if (origTweet != nil) {
+          TwitterClient.sharedInstance.postTweetWithParams(["status":self.composeText.text, "in_reply_to_status_id": origTweet!.id_str], completion: { (error) -> () in
             println("posted tweet!")
-        })
+          })
+        } else {
+          TwitterClient.sharedInstance.postTweetWithParams(["status":self.composeText.text], completion: { (error) -> () in
+            println("posted tweet!")
+          })
+        }
+        NSNotificationCenter.defaultCenter().postNotificationName(userTimelineNotification, object: nil)
+    }
+    
+    @IBAction func cancelAction(sender: AnyObject) {
+        NSNotificationCenter.defaultCenter().postNotificationName(userTimelineNotification, object: nil)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        if (origTweet != nil) {
+            composeText.text = origTweet!.text
+        }
     }
 
     override func didReceiveMemoryWarning() {

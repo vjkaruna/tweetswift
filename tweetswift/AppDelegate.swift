@@ -12,17 +12,17 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var storyboard = UIStoryboard(name: "Main", bundle: nil)
+    var sb = UIStoryboard(name: "Main", bundle: nil)
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "userDidLogout", name: userDidLogoutNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "backToTimeline", name: userTimelineNotification, object: nil)
         
-        if User.currentUser != nil {
-            var vc = storyboard.instantiateViewControllerWithIdentifier("TweetsViewController") as UIViewController
-            window?.rootViewController = vc
+        if (User.currentUser != nil) {
+            backToTimeline()
         }
         
         return true
@@ -30,9 +30,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func userDidLogout() {
         println("responding to logout notification")
-        var vc = storyboard.instantiateInitialViewController() as UIViewController
-        window?.rootViewController = vc
+        var vc = sb.instantiateInitialViewController() as UIViewController
+        self.window?.rootViewController = vc
         
+    }
+    
+    func backToTimeline() {
+        println("load timeline")
+        var vc = sb.instantiateViewControllerWithIdentifier("TweetsViewController") as UIViewController
+        // var vc = sb.instantiateViewControllerWithIdentifier("navigationController") as UIViewController
+        var nvc = sb.instantiateViewControllerWithIdentifier("navigationController") as UINavigationController
+        nvc.pushViewController(vc, animated: false)
+        self.window?.rootViewController = nvc
     }
 
     func applicationWillResignActive(application: UIApplication) {

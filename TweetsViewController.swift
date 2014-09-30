@@ -8,11 +8,12 @@
 
 import UIKit
 
-class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
 
     var tweets: [Tweet]?
     
     @IBOutlet weak var tweetsTable: UITableView!
+    var pullView: PullToRefreshView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,12 +25,46 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         })
         
         self.navigationItem.title = "Home"
+        
+        var f = CGRectMake(0, 0, self.tweetsTable.bounds.size.width, 1)
+        let pullContainer = UIView(frame: f)
+        tweetsTable.estimatedRowHeight = 88
+        tweetsTable.rowHeight = UITableViewAutomaticDimension
+        pullView = UINib(nibName: "PullToRefreshView", bundle: nil).instantiateWithOwner(self, options: nil)[0] as PullToRefreshView
+        f.origin.y = -88
+        f.size.height = 88
+        pullView.frame = f
+        pullContainer.addSubview(pullView)
+        self.tweetsTable.tableHeaderView = pullContainer
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        NSLog("Scrolling to: \(scrollView.contentOffset.y)")
+    }
+    
+    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if scrollView.contentOffset.y < -pullDistance {
+            NSLog("Would pull")
+            pullView.state = .Refreshing
+            self.tweetsTable.contentInset = UIEdgeInsets(top: 88.0, left: 0, bottom: 0, right: 0)
+            self.tweetsTable.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+            
+            TwitterClient.sharedInstance.homeTimelineWithParams(nil, completion: { (tweets, error) -> () in
+                self.tweets = tweets
+                self.pullView.state = .Default
+                self.tweetsTable.reloadData()
+            })
+        } else {
+            NSLog("not far enough")
+        }
+    }
+    
+    let pullDistance:CGFloat = 88.0
     
 
     @IBAction func logoutAction(sender: AnyObject) {
@@ -40,7 +75,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     @IBAction func replyAction(sender: AnyObject) {
         println("in reply")
-        self.performSegueWithIdentifier("composeSegue", sender: self)
+        self.performSegueWithIdentifier("composeSegue", sender: sender)
     }
     
     @IBAction func retweetAction(sender: AnyObject) {
@@ -131,6 +166,13 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
         } else {
             
+            if (sender is UIButton) {
+              let cvc = segue.destinationViewController as ComposeController
+              var clickedsuper = (sender as UIButton).superview as UIView!
+              var clickedCell = clickedsuper.superview as UITableViewCell!
+              var indexPath = self.tweetsTable.indexPathForCell(clickedCell) as NSIndexPath!
+              cvc.origTweet = tweets![indexPath.row]
+            }
         }
     }
     

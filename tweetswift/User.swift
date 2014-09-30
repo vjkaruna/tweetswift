@@ -12,6 +12,7 @@ var _currentUser: User?
 let currentUserKey = "kCurrentUserKey"
 let userDidLoginNotification = "userDidLoginNotification"
 let userDidLogoutNotification = "userDidLogoutNotification"
+let userTimelineNotification = "userTimelineNotification"
 
 class User: NSObject {
     
@@ -52,7 +53,7 @@ class User: NSObject {
         set(user) {
             _currentUser = user
             
-            if _currentUser != nil {
+            if user != nil {
                 var data = NSJSONSerialization.dataWithJSONObject(user!.dictionary, options: nil, error: nil)
                 NSUserDefaults.standardUserDefaults().setObject(data, forKey: currentUserKey)
             } else {
