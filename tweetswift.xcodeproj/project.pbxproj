@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		66106CBB19D633DA00E0B025 /* TwitterClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66106CBA19D633DA00E0B025 /* TwitterClient.swift */; };
+		66519ECF19DAF0FE0042E4B3 /* TweetDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66519ECE19DAF0FE0042E4B3 /* TweetDetailController.swift */; };
+		66519ED119DAFE9D0042E4B3 /* ComposeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66519ED019DAFE9D0042E4B3 /* ComposeController.swift */; };
 		6699A28819DA09170079E714 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6699A28719DA09170079E714 /* User.swift */; };
 		6699A28C19DA11240079E714 /* TweetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6699A28B19DA11240079E714 /* TweetsViewController.swift */; };
 		66BBF2B419D488D700818D67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BBF2B319D488D700818D67 /* AppDelegate.swift */; };
@@ -36,6 +38,8 @@
 		66106CBD19D6359500E0B025 /* libPods-BDBOAuth1Manager.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-BDBOAuth1Manager.a"; path = "Pods/build/Debug-iphoneos/libPods-BDBOAuth1Manager.a"; sourceTree = "<group>"; };
 		66106CBE19D6359500E0B025 /* libPods-MBProgressHUD.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-MBProgressHUD.a"; path = "Pods/build/Debug-iphoneos/libPods-MBProgressHUD.a"; sourceTree = "<group>"; };
 		66106CBF19D6359500E0B025 /* libPods-SDWebImage.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-SDWebImage.a"; path = "Pods/build/Debug-iphoneos/libPods-SDWebImage.a"; sourceTree = "<group>"; };
+		66519ECE19DAF0FE0042E4B3 /* TweetDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetDetailController.swift; sourceTree = "<group>"; };
+		66519ED019DAFE9D0042E4B3 /* ComposeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeController.swift; sourceTree = "<group>"; };
 		6699A28719DA09170079E714 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		6699A28B19DA11240079E714 /* TweetsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TweetsViewController.swift; path = ../TweetsViewController.swift; sourceTree = "<group>"; };
 		669BE51819D637E70061C054 /* tweetswift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "tweetswift-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -95,6 +99,16 @@
 			name = models;
 			sourceTree = "<group>";
 		};
+		66519ED219DB00040042E4B3 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				66519ED019DAFE9D0042E4B3 /* ComposeController.swift */,
+				6699A28B19DA11240079E714 /* TweetsViewController.swift */,
+				66519ECE19DAF0FE0042E4B3 /* TweetDetailController.swift */,
+			);
+			name = views;
+			sourceTree = "<group>";
+		};
 		66BBF2A519D488D700818D67 = {
 			isa = PBXGroup;
 			children = (
@@ -118,7 +132,7 @@
 		66BBF2B019D488D700818D67 /* tweetswift */ = {
 			isa = PBXGroup;
 			children = (
-				6699A28B19DA11240079E714 /* TweetsViewController.swift */,
+				66519ED219DB00040042E4B3 /* views */,
 				66106CB919D633B500E0B025 /* models */,
 				66BBF2B319D488D700818D67 /* AppDelegate.swift */,
 				66BBF2B519D488D700818D67 /* ViewController.swift */,
@@ -294,6 +308,8 @@
 				6699A28C19DA11240079E714 /* TweetsViewController.swift in Sources */,
 				6699A28819DA09170079E714 /* User.swift in Sources */,
 				66BBF2B619D488D700818D67 /* ViewController.swift in Sources */,
+				66519ECF19DAF0FE0042E4B3 /* TweetDetailController.swift in Sources */,
+				66519ED119DAFE9D0042E4B3 /* ComposeController.swift in Sources */,
 				66F188CD19DA15EC00635AB3 /* Tweet.swift in Sources */,
 				66106CBB19D633DA00E0B025 /* TwitterClient.swift in Sources */,
 				66BBF2B419D488D700818D67 /* AppDelegate.swift in Sources */,

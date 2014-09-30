@@ -22,6 +22,8 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             self.tweets = tweets
             self.tweetsTable.reloadData()
         })
+        
+        self.navigationItem.title = "Home"
     }
 
     override func didReceiveMemoryWarning() {
@@ -68,13 +70,40 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let nameLabel: UILabel = cell.viewWithTag(102) as UILabel
         let userLabel: UILabel = cell.viewWithTag(103) as UILabel
         let dateLabel: UILabel = cell.viewWithTag(104) as UILabel
+        let retweetedSymbol: UIImageView = cell.viewWithTag(201) as UIImageView
+        let retweetedLabel: UILabel = cell.viewWithTag(202) as UILabel
         
         thumbnail.sd_setImageWithURL(NSURL(string: tweet.user!.profileImageUrl!))
         nameLabel.text = tweet.text
         userLabel.text = tweet.userLabelText
         dateLabel.text = tweet.dateLabelText
         
+        if (tweet.retweeted) {
+            retweetedLabel.text = "\(tweet.retweeting_user!.name!) retweeted"
+        } else {
+            retweetedSymbol.hidden = true
+            retweetedLabel.hidden = true
+        }
+        
+        
         return cell
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if (segue.identifier == "tweetDetail") {
+            let dvc = segue.destinationViewController as TweetDetailController
+            let sourcerow = self.tweetsTable.indexPathForSelectedRow()?.row
+            if (sourcerow != nil) {
+                dvc.tweet = tweets![sourcerow!]
+            }
+        } else {
+            
+        }
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.performSegueWithIdentifier("tweetDetail", sender: self)
     }
     
 }

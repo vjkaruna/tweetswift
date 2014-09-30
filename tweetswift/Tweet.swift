@@ -13,8 +13,20 @@ class Tweet: NSObject {
     var text: String?
     var createdAtString: String?
     var createdAt: NSDate?
+    var retweeted = false
+    var retweeting_user: User?
     
-    init(dictionary: NSDictionary) {
+    
+    init(json_dict: NSDictionary) {
+        
+        var dictionary = json_dict
+        var retweeted_status = dictionary["retweeted_status"] as? NSDictionary
+        if (retweeted_status != nil) {
+            retweeted = true
+            retweeting_user = User(dictionary: dictionary["user"] as NSDictionary)
+            dictionary = retweeted_status!
+        }
+        
         user = User(dictionary: dictionary["user"] as NSDictionary)
         text = dictionary["text"] as? String
         createdAtString = dictionary["created_at"] as? String
@@ -28,7 +40,7 @@ class Tweet: NSObject {
         var tweets = [Tweet]()
         
         for dictionary in array {
-            tweets.append(Tweet(dictionary: dictionary))
+            tweets.append(Tweet(json_dict: dictionary))
         }
         
         return tweets
