@@ -13,6 +13,9 @@ class ComposeController: UIViewController {
     @IBOutlet weak var composeText: UITextField!
     
     @IBAction func postTweetAction(sender: AnyObject) {
+        TwitterClient.sharedInstance.postTweetWithParams(["status":self.composeText.text], completion: { (error) -> () in
+            println("posted tweet!")
+        })
     }
     
     override func viewDidLoad() {

@@ -128,6 +128,9 @@
                                                             <exclude reference="l5C-xb-23O"/>
                                                         </mask>
                                                     </variation>
+                                                    <connections>
+                                                        <action selector="replyAction:" destination="vXZ-lx-hvc" eventType="touchDragInside" id="dCM-Le-G5x"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Tb-fo-e0H">
                                                     <rect key="frame" x="154" y="111" width="71" height="17"/>
@@ -149,6 +152,9 @@
                                                             <exclude reference="AhV-3G-u6g"/>
                                                         </mask>
                                                     </variation>
+                                                    <connections>
+                                                        <action selector="retweetAction:" destination="vXZ-lx-hvc" eventType="touchDragInside" id="aec-QH-WAw"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XDI-KI-oDX">
                                                     <rect key="frame" x="247" y="111" width="71" height="17"/>
@@ -170,6 +176,9 @@
                                                             <exclude reference="oNx-ta-sAx"/>
                                                         </mask>
                                                     </variation>
+                                                    <connections>
+                                                        <action selector="favoriteAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="bU4-Fw-2Cb"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="103" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PmI-TJ-svU">
                                                     <rect key="frame" x="61" y="28" width="483" height="18"/>
@@ -313,8 +322,8 @@
                                 <state key="selected" image="reply_hover"/>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="iGw-44-sjb"/>
                                         <exclude reference="5Id-H7-qDd"/>
+                                        <exclude reference="iGw-44-sjb"/>
                                     </mask>
                                 </variation>
                             </button>
@@ -355,8 +364,8 @@
                                 <state key="highlighted" image="favorite_on"/>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="rsB-tt-IvU"/>
                                         <exclude reference="NVE-mC-nez"/>
+                                        <exclude reference="rsB-tt-IvU"/>
                                     </mask>
                                 </variation>
                             </button>

@@ -29,6 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func userDidLogout() {
+        println("responding to logout notification")
         var vc = storyboard.instantiateInitialViewController() as UIViewController
         window?.rootViewController = vc
         

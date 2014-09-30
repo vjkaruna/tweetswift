@@ -30,10 +30,11 @@ class User: NSObject {
         tagline = dictionary["description"] as? String
     }
     
-    func logout() {
+    class func logout() {
         User.currentUser = nil
         TwitterClient.sharedInstance.requestSerializer.removeAccessToken()
         
+        println("posting logout notification")
         NSNotificationCenter.defaultCenter().postNotificationName(userDidLogoutNotification, object: nil)
     }
     

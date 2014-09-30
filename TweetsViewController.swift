@@ -33,7 +33,22 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
 
     @IBAction func logoutAction(sender: AnyObject) {
-        User.currentUser?.logout()
+        println("Recevied logout action")
+        User.logout()
+        
+    }
+    
+    @IBAction func replyAction(sender: AnyObject) {
+    }
+    
+    @IBAction func retweetAction(sender: AnyObject) {
+    }
+    
+    @IBAction func favoriteAction(sender: AnyObject) {
+        var clickedsuper = sender.superview as UIView!
+        var clickedCell = clickedsuper.superview as UITableViewCell!
+        var indexPath = self.tweetsTable.indexPathForCell(clickedCell) as NSIndexPath!
+        println("Favorited \(tweets![indexPath.row].user!.name)")
     }
     
     /*
