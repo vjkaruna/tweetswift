@@ -44,12 +44,12 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        NSLog("Scrolling to: \(scrollView.contentOffset.y)")
+        //NSLog("Scrolling to: \(scrollView.contentOffset.y)")
     }
     
     func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if scrollView.contentOffset.y < -pullDistance {
-            NSLog("Would pull")
+            //NSLog("Would pull")
             pullView.state = .Refreshing
             self.tweetsTable.contentInset = UIEdgeInsets(top: 88.0, left: 0, bottom: 0, right: 0)
             self.tweetsTable.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
@@ -60,7 +60,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 self.tweetsTable.reloadData()
             })
         } else {
-            NSLog("not far enough")
+            //NSLog("not far enough")
         }
     }
     
@@ -80,6 +80,8 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     @IBAction func retweetAction(sender: AnyObject) {
         println("in retweet")
+        var rtbutton = sender as UIButton
+        rtbutton.selected = true
         var clickedsuper = sender.superview as UIView!
         var clickedCell = clickedsuper.superview as UITableViewCell!
         var indexPath = self.tweetsTable.indexPathForCell(clickedCell) as NSIndexPath!
@@ -91,6 +93,8 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     @IBAction func favoriteAction(sender: AnyObject) {
+        var fvbutton = sender as UIButton
+        fvbutton.selected = true
         var clickedsuper = sender.superview as UIView!
         var clickedCell = clickedsuper.superview as UITableViewCell!
         var indexPath = self.tweetsTable.indexPathForCell(clickedCell) as NSIndexPath!
@@ -140,16 +144,23 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         thumbnail.sd_setImageWithURL(NSURL(string: tweet.user!.profileImageUrl!))
         nameLabel.enabledTextCheckingTypes = NSTextCheckingAllSystemTypes
         nameLabel.text = tweet.text
-        userLabel.text = tweet.userLabelText
+        userLabel.attributedText = tweet.userLabelText
         dateLabel.text = tweet.dateLabelText
+        
+        var nc = NSLayoutConstraint(item: retweetedSymbol, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: thumbnail, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: -8.0)
         
         if (tweet.retweeted) {
             retweetedLabel.text = "\(tweet.retweeting_user!.name!) retweeted"
+            retweetedSymbol.hidden = false
+            retweetedLabel.hidden = false
+            retweetedSymbol.superview!.addConstraint(nc)
+            
         } else {
             retweetedSymbol.hidden = true
             retweetedLabel.hidden = true
-            retweetedSymbol.removeConstraints(retweetedSymbol.constraints())
-            retweetedLabel.removeConstraints(retweetedLabel.constraints())
+            retweetedSymbol.superview!.removeConstraint(nc)
+            //retweetedLabel.removeConstraints(retweetedLabel.constraints())
+            //retweetedSymbol.removeConstraints(retweetedSymbol.constraints())
         }
         
         

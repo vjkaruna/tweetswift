@@ -14,6 +14,7 @@ class ComposeController: UIViewController {
     var origTweet: Tweet?
     
     
+    @IBOutlet weak var composeLabel: UILabel!
     @IBAction func postTweetAction(sender: AnyObject) {
         if (origTweet != nil) {
           TwitterClient.sharedInstance.postTweetWithParams(["status":self.composeText.text, "in_reply_to_status_id": origTweet!.id_str], completion: { (error) -> () in
@@ -37,6 +38,7 @@ class ComposeController: UIViewController {
         // Do any additional setup after loading the view.
         if (origTweet != nil) {
             composeText.text = origTweet!.text
+            composeLabel.text = "Reply to \(origTweet!.user!.name)"
         }
     }
 

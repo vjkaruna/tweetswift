@@ -33,7 +33,7 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
             var authURL = NSURL(string: "https://api.twitter.com/oauth/authorize?oauth_token=\(requestToken.token)" )
             UIApplication.sharedApplication().openURL(authURL)
             }, failure: { (error: NSError!) -> Void in
-                println("Error with Oauth \(error)")
+                self.showError("Error with Oauth \(error)")
                 self.loginCompletion?(user: nil, error: error)
         })
         
@@ -50,11 +50,11 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
                 self.loginCompletion?(user: user, error: nil)
                 println("\(response)")
                 }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
-                    println("\(operation)")
+                    self.showError("Network error \(operation)")
             })
             
             } , failure: { (nserror: NSError!) -> Void in
-                println("TODO: Network error")
+                self.showError("Network error")
                 self.loginCompletion?(user: nil, error: nserror)
         })
     }
@@ -64,11 +64,11 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
             (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
             var tweets = Tweet.tweetsWithArray(response as [NSDictionary])
             for tweet in tweets {
-                println("created: \(tweet.createdAt)")
+                //println("created: \(tweet.createdAt)")
             }
             completion(tweets: tweets, error: nil)
             }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
-                println("TODO error: \(operation)")
+                self.showError("Network error: \(operation)")
         })
     }
     
@@ -77,7 +77,7 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
             (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
             completion(error: nil)
             }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
-                println("TODO error: \(operation)")
+                self.showError("Network error: \(operation)")
         })
     }
 
@@ -86,7 +86,7 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
             (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
             completion(error: nil)
             }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
-                println("TODO error: \(operation)")
+                self.showError("Network error: \(operation)")
         })
     }
     
@@ -95,8 +95,23 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
             (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
             completion(error: nil)
             }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
-                println("TODO error: \(operation)")
+                self.showError("Network error: \(operation)")
         })
+    }
+    
+    func showError(error: String) {
+        var contentView = UIView()
+        contentView.backgroundColor = UIColor.whiteColor()
+        contentView.frame = CGRectMake(0, 0, 200, 200)
+        var myLabel = UILabel()
+        myLabel.numberOfLines = 0
+        myLabel.frame = CGRectMake(0, 0, 200, 200)
+        myLabel.text = error
+        contentView.addSubview(myLabel)
+        
+        
+        var popup = KLCPopup(contentView: contentView)
+        popup.show()
     }
     
     

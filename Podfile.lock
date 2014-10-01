@@ -23,6 +23,7 @@ PODS:
   - BDBOAuth1Manager (1.4.0):
     - AFNetworking/NSURLConnection (~> 2.4.0)
     - AFNetworking/NSURLSession (~> 2.4.0)
+  - KLCPopup (1.0)
   - MBProgressHUD (0.9)
   - PrettyTimestamp (1.1)
   - SDWebImage (3.7.1):
@@ -33,6 +34,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 2.2)
   - BDBOAuth1Manager (= 1.4.0)
+  - KLCPopup
   - MBProgressHUD (~> 0.5)
   - PrettyTimestamp (= 1.1)
   - SDWebImage (~> 3.6)
@@ -41,6 +43,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: 0aabc6fae66d6e5d039eeb21c315843c7aae51ab
   BDBOAuth1Manager: 4f0967110286edd4c7961cf48a4eb242c64137a1
+  KLCPopup: 23548d0454ca156b0eb684f791f234b9c2134369
   MBProgressHUD: 2038dbcf3dce73215abed6001657043d53aa79a8
   PrettyTimestamp: ba24078af51cf06ec741cd9660d8dea25166ae06
   SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d

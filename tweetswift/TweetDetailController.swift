@@ -15,8 +15,30 @@ class TweetDetailController: UIViewController {
     @IBOutlet weak var avatar: UIImageView!
     
     @IBOutlet weak var username: UILabel!
-    @IBOutlet weak var tweetBody: UILabel!
+    @IBOutlet weak var tweetBody: TTTAttributedLabel!
     @IBOutlet weak var date: UILabel!
+    
+    @IBAction func replyAction(sender: AnyObject) {
+        self.performSegueWithIdentifier("composeDetailSegue", sender: sender)
+    }
+    @IBAction func retweetAction(sender: AnyObject) {
+        println("in retweet")
+        var rtbutton = sender as UIButton
+        rtbutton.selected = true
+        var id_str = tweet!.id_str!
+        TwitterClient.sharedInstance.nativeRetweet(id_str) { (error) -> () in
+            println("Retweeted!")
+        }
+    }
+    @IBAction func favoriteAction(sender: AnyObject) {
+        var fvbutton = sender as UIButton
+        fvbutton.selected = true
+        var id_str = tweet!.id_str!
+        TwitterClient.sharedInstance.favTweet(id_str) { (error) -> () in
+            println("Favorited!")
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,9 +47,10 @@ class TweetDetailController: UIViewController {
         println("\(tweet!.text)")
         
         self.avatar.sd_setImageWithURL(NSURL(string:tweet!.user!.profileImageUrl!))
+        self.tweetBody.enabledTextCheckingTypes = NSTextCheckingAllSystemTypes
         self.tweetBody.text = tweet!.text
         self.date.text = tweet!.dateLabelText
-        self.username.text = tweet!.userLabelText
+        self.username.attributedText = tweet!.userLabelText
         
         /** let replyBtn = self.navigationController?.navigationBar.viewWithTag(901) as UIBarButtonItem
         replyBtn.title = "Reply"

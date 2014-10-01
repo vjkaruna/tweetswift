@@ -48,9 +48,23 @@ class Tweet: NSObject {
         return tweets
     }
     
+    /**
+    
     var userLabelText: String {
         return "\(self.user!.name!) @\(self.user!.screenname!)"
     }
+
+    **/
+    
+    lazy var userLabelText: NSMutableAttributedString = {
+        let descText = NSMutableAttributedString()
+        let textFont = [NSFontAttributeName:UIFont(name: "HelveticaNeue", size: 12.0)]
+        let boldFont = [NSFontAttributeName:UIFont(name: "HelveticaNeue-Bold", size: 12.0)]
+        
+        descText.appendAttributedString(NSAttributedString(string: "\(self.user!.name!)",attributes:boldFont))
+        descText.appendAttributedString(NSAttributedString(string: " @\(self.user!.screenname!)",attributes:textFont))
+        return descText
+    }()
     
     var dateLabelText: String {
         return createdAt!.prettyTimestampSinceNow()!
