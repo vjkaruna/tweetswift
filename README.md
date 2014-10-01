@@ -19,12 +19,9 @@ Used a separate xib for PullToRefresh in the table header.
 Required Tasks
 ============
 
+- Sign in with OAuth.
 - Pull to Refresh.
 - Compose and reply to tweets.
 - Tweet details page.
 - Favoriting and native retweeting.
 - User details saved between instances.
-- Log out.
-- Retweeted header on tweets (constraints added/removed when not applicable.)
-
-- 
