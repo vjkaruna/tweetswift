@@ -140,7 +140,11 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let dateLabel: UILabel = cell.viewWithTag(104) as UILabel
         let retweetedSymbol: UIImageView = cell.viewWithTag(201) as UIImageView
         let retweetedLabel: UILabel = cell.viewWithTag(202) as UILabel
+        let favbutton: UIButton = cell.viewWithTag(401) as UIButton
+        let rtbutton: UIButton = cell.viewWithTag(402) as UIButton
         
+        favbutton.selected = false
+        rtbutton.selected = false
         thumbnail.sd_setImageWithURL(NSURL(string: tweet.user!.profileImageUrl!))
         nameLabel.enabledTextCheckingTypes = NSTextCheckingAllSystemTypes
         nameLabel.text = tweet.text
