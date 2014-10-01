@@ -38,7 +38,7 @@ class ComposeController: UIViewController {
         // Do any additional setup after loading the view.
         if (origTweet != nil) {
             composeText.text = origTweet!.text
-            composeLabel.text = "Reply to \(origTweet!.user!.name)"
+            composeLabel.text = "Reply to \(origTweet!.user!.name!)"
         }
     }
 
