@@ -2,6 +2,7 @@ Tweetswift
 ===========
 
 Client for Twitter in Swift, for Codepath.
+
 (To change Twitter app Consumer Key / Secret, modify the top of tweetswift/models/TwitterClient.swift)
 
 ![Screenshot](https://raw.githubusercontent.com/vjkaruna/tweetswift/master/tweetswift.gif)
