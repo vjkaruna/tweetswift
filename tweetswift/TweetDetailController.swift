@@ -44,7 +44,7 @@ class TweetDetailController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        println("\(tweet!.text)")
+        //println("\(tweet!.text)")
         
         self.avatar.sd_setImageWithURL(NSURL(string:tweet!.user!.profileImageUrl!))
         self.tweetBody.enabledTextCheckingTypes = NSTextCheckingAllSystemTypes

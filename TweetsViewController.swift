@@ -145,6 +145,8 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         favbutton.selected = false
         rtbutton.selected = false
+        thumbnail.layer.cornerRadius = 8
+        thumbnail.layer.masksToBounds = true
         thumbnail.sd_setImageWithURL(NSURL(string: tweet.user!.profileImageUrl!))
         nameLabel.enabledTextCheckingTypes = NSTextCheckingAllSystemTypes
         nameLabel.text = tweet.text

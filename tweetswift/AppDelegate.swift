@@ -37,11 +37,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func backToTimeline() {
         println("load timeline")
-        var vc = sb.instantiateViewControllerWithIdentifier("TweetsViewController") as UIViewController
-        // var vc = sb.instantiateViewControllerWithIdentifier("navigationController") as UIViewController
-        var nvc = sb.instantiateViewControllerWithIdentifier("navigationController") as UINavigationController
-        nvc.pushViewController(vc, animated: false)
-        self.window?.rootViewController = nvc
+        //var vc = sb.instantiateViewControllerWithIdentifier("TweetsViewController") as UIViewController
+        //var nvc = sb.instantiateViewControllerWithIdentifier("navigationController") as UINavigationController
+        //nvc.pushViewController(vc, animated: false)
+        var vc = sb.instantiateViewControllerWithIdentifier("HamburgerViewController") as UIViewController
+        self.window?.rootViewController = vc
     }
 
     func applicationWillResignActive(application: UIApplication) {

@@ -12,6 +12,7 @@
 		66519ED119DAFE9D0042E4B3 /* ComposeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66519ED019DAFE9D0042E4B3 /* ComposeController.swift */; };
 		6699A28819DA09170079E714 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6699A28719DA09170079E714 /* User.swift */; };
 		6699A28C19DA11240079E714 /* TweetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6699A28B19DA11240079E714 /* TweetsViewController.swift */; };
+		66ABDE8519E32E8C003E6BD8 /* HamburgerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66ABDE8419E32E8C003E6BD8 /* HamburgerViewController.swift */; };
 		66B3553119DB444C009B8F1D /* PullToRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B3553019DB444B009B8F1D /* PullToRefreshView.swift */; };
 		66B3553319DB4665009B8F1D /* PullToRefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66B3553219DB4665009B8F1D /* PullToRefreshView.xib */; };
 		66BBF2B419D488D700818D67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BBF2B319D488D700818D67 /* AppDelegate.swift */; };
@@ -45,6 +46,7 @@
 		6699A28719DA09170079E714 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		6699A28B19DA11240079E714 /* TweetsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TweetsViewController.swift; path = ../TweetsViewController.swift; sourceTree = "<group>"; };
 		669BE51819D637E70061C054 /* tweetswift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "tweetswift-Bridging-Header.h"; sourceTree = "<group>"; };
+		66ABDE8419E32E8C003E6BD8 /* HamburgerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HamburgerViewController.swift; sourceTree = "<group>"; };
 		66B3553019DB444B009B8F1D /* PullToRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullToRefreshView.swift; sourceTree = "<group>"; };
 		66B3553219DB4665009B8F1D /* PullToRefreshView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PullToRefreshView.xib; sourceTree = "<group>"; };
 		66BBF2AE19D488D700818D67 /* tweetswift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tweetswift.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -142,6 +144,7 @@
 				66BBF2B319D488D700818D67 /* AppDelegate.swift */,
 				66BBF2B519D488D700818D67 /* ViewController.swift */,
 				66BBF2B719D488D700818D67 /* Main.storyboard */,
+				66ABDE8419E32E8C003E6BD8 /* HamburgerViewController.swift */,
 				66B3553219DB4665009B8F1D /* PullToRefreshView.xib */,
 				66BBF2BA19D488D700818D67 /* Images.xcassets */,
 				66BBF2BC19D488D700818D67 /* LaunchScreen.xib */,
@@ -320,6 +323,7 @@
 				66519ED119DAFE9D0042E4B3 /* ComposeController.swift in Sources */,
 				66F188CD19DA15EC00635AB3 /* Tweet.swift in Sources */,
 				66106CBB19D633DA00E0B025 /* TwitterClient.swift in Sources */,
+				66ABDE8519E32E8C003E6BD8 /* HamburgerViewController.swift in Sources */,
 				66BBF2B419D488D700818D67 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

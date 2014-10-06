@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A343f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="4uy-ox-jGd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A379a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="4uy-ox-jGd">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -520,11 +520,75 @@
                     </view>
                     <connections>
                         <segue destination="XqZ-nP-f8C" kind="presentation" identifier="loginSegue" id="BCr-Ik-i7e"/>
+                        <segue destination="dVz-Ku-JzC" kind="presentation" identifier="hamburgerLoginSegue" id="c2u-2s-qSA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WL2-6u-jTP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-286" y="1048"/>
+            <point key="canvasLocation" x="-323" y="1161"/>
+        </scene>
+        <!--Hamburger View Controller-->
+        <scene sceneID="I2A-hw-Cim">
+            <objects>
+                <viewController id="dVz-Ku-JzC" customClass="HamburgerViewController" customModule="tweetswift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Cvi-u5-wn3"/>
+                        <viewControllerLayoutGuide type="bottom" id="DDN-Le-O6o"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2Pb-R4-fOR">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aqc-LH-U7A" userLabel="MenuView">
+                                <rect key="frame" x="16" y="0.0" width="160" height="600"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Menu" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nEa-Zo-tJF">
+                                        <rect key="frame" x="44" y="53" width="72" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="14c-83-20Y"/>
+                                    <constraint firstAttribute="centerX" secondItem="nEa-Zo-tJF" secondAttribute="centerX" id="GA5-yb-dc5"/>
+                                    <constraint firstItem="nEa-Zo-tJF" firstAttribute="top" secondItem="aqc-LH-U7A" secondAttribute="top" constant="53" id="o40-aM-XDe"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uvf-VU-eqr" userLabel="ContentView">
+                                <rect key="frame" x="176" y="-22" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="gom-PL-bUP" appends="YES" id="cej-dh-hi9"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="Uvf-VU-eqr" secondAttribute="centerY" id="B5R-Yh-cgV"/>
+                            <constraint firstAttribute="width" secondItem="Uvf-VU-eqr" secondAttribute="width" id="MnB-Xc-yE5"/>
+                            <constraint firstAttribute="height" secondItem="Uvf-VU-eqr" secondAttribute="height" id="goY-4u-Q0G"/>
+                            <constraint firstAttribute="centerX" secondItem="Uvf-VU-eqr" secondAttribute="centerX" constant="-10" id="hgi-1i-knw"/>
+                            <constraint firstItem="Uvf-VU-eqr" firstAttribute="leading" secondItem="aqc-LH-U7A" secondAttribute="trailing" id="kki-ub-mWP"/>
+                            <constraint firstItem="aqc-LH-U7A" firstAttribute="top" secondItem="2Pb-R4-fOR" secondAttribute="topMargin" id="nPE-Hj-ip1"/>
+                            <constraint firstItem="DDN-Le-O6o" firstAttribute="top" secondItem="aqc-LH-U7A" secondAttribute="bottom" id="yYu-RT-3MA"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="contentCenterCons" destination="hgi-1i-knw" id="gc3-9C-rGA"/>
+                        <outlet property="contentView" destination="Uvf-VU-eqr" id="Avn-je-MKh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hi3-uh-4jj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="gom-PL-bUP">
+                    <connections>
+                        <action selector="swipeGesture:" destination="dVz-Ku-JzC" id="8SX-ya-XKJ"/>
+                    </connections>
+                </swipeGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="91" y="507"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Tnk-cn-crM">

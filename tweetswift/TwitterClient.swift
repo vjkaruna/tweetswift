@@ -8,8 +8,8 @@
 
 import Foundation
 
-let twitterConsumerKey = "YqtB50sG5dEEptzoqr3D30v7w"
-let twitterConsumerSecret = "dKg1FlIeHWOBwrTML8MlxObvWBBnE1BdUXAe8ccvkg0fA2Elf1"
+let twitterConsumerKey = "KCubIEfxcGTPPI1Y1OvqpbS1v"
+let twitterConsumerSecret = "kmEKaEzYPwu1C7NxW72baF680DKD3XPzih0q5JfkXV7oL1CAsD"
 let twitterBaseURL = NSURL(string: "https://api.twitter.com")
 
 class TwitterClient: BDBOAuth1RequestOperationManager {
@@ -46,10 +46,10 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
             TwitterClient.sharedInstance.requestSerializer.saveAccessToken(accessToken)
             TwitterClient.sharedInstance.GET("1.1/account/verify_credentials.json", parameters: nil, success: {
                 (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
-                println("handling response \(response)")
+                //println("handling response \(response)")
                 var user = User(dictionary: response as NSDictionary)
                 self.loginCompletion?(user: user, error: nil)
-                println("\(response)")
+                //println("\(response)")
                 }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
                     self.showError("Network error \(operation)")
             })
