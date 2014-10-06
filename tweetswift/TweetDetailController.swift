@@ -39,6 +39,9 @@ class TweetDetailController: UIViewController {
         }
     }
     
+    @IBAction func avatarButtonAction(sender: AnyObject) {
+        self.performSegueWithIdentifier("profileSegue", sender: sender)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +49,8 @@ class TweetDetailController: UIViewController {
         // Do any additional setup after loading the view.
         //println("\(tweet!.text)")
         
+        self.avatar.layer.cornerRadius = 8
+        self.avatar.layer.masksToBounds = true
         self.avatar.sd_setImageWithURL(NSURL(string:tweet!.user!.profileImageUrl!))
         self.tweetBody.enabledTextCheckingTypes = NSTextCheckingAllSystemTypes
         self.tweetBody.text = tweet!.text

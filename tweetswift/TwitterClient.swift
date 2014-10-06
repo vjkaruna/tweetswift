@@ -46,7 +46,7 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
             TwitterClient.sharedInstance.requestSerializer.saveAccessToken(accessToken)
             TwitterClient.sharedInstance.GET("1.1/account/verify_credentials.json", parameters: nil, success: {
                 (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
-                //println("handling response \(response)")
+                println("handling response \(response)")
                 var user = User(dictionary: response as NSDictionary)
                 self.loginCompletion?(user: user, error: nil)
                 //println("\(response)")
@@ -68,6 +68,16 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
                 //println("created: \(tweet.createdAt)")
             }
             completion(tweets: tweets, error: nil)
+            }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                self.showError("Network error: \(operation)")
+        })
+    }
+    
+    func showUser(screenname: String, completion: (user:User?, error: NSError?) -> ()) {
+        GET("1.1/users/show.json", parameters: ["screen_name":screenname], success: {
+            (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+            var res_user = User(dictionary: response as NSDictionary)
+            completion(user:res_user, error: nil)
             }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
                 self.showError("Network error: \(operation)")
         })
