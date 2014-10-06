@@ -9,11 +9,28 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
+    
+    var user: User?
 
+    @IBOutlet weak var background: UIImageView!
+    @IBOutlet weak var avatar: UIImageView!
+    @IBOutlet weak var usernameLabel: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        if (self.user == nil) {
+            println("loading current user for profile")
+            self.user = User.currentUser
+        }
+        println("user \(self.user)")
+        background.sd_setImageWithURL(NSURL(string: self.user!.profileBackgroundImageUrl!))
+        avatar.sd_setImageWithURL(NSURL(string: self.user!.profileImageUrl!))
+        usernameLabel.text = self.user!.name
+        
+        
     }
 
     override func didReceiveMemoryWarning() {

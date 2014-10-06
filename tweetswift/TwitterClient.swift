@@ -46,9 +46,13 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
             TwitterClient.sharedInstance.requestSerializer.saveAccessToken(accessToken)
             TwitterClient.sharedInstance.GET("1.1/account/verify_credentials.json", parameters: nil, success: {
                 (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
-                println("handling response \(response)")
-                var user = User(dictionary: response as NSDictionary)
-                self.loginCompletion?(user: user, error: nil)
+                //println("handling response \(response)")
+                if (!(response is NSDictionary)) {
+                    self.showError("Response is not a dictionary")
+                } else {
+                    var user = User(dictionary: response as NSDictionary)
+                    self.loginCompletion?(user: user, error: nil)
+                }
                 //println("\(response)")
                 }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
                     self.showError("Network error \(operation)")

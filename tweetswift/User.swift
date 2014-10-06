@@ -30,7 +30,7 @@ class User: NSObject {
     init(dictionary: NSDictionary) {
         self.dictionary = dictionary
         
-        println("Confirm user \(dictionary)")
+        //println("Confirm user \(dictionary)")
         
         name = dictionary["name"] as? String
         screenname = dictionary["screen_name"] as? String
@@ -52,9 +52,12 @@ class User: NSObject {
     
     class var currentUser: User? {
         get {
-            if _currentUser == nil {
+            println("in current user get")
+            if (_currentUser == nil) {
+                println("_currentUser is nil")
                 var data = NSUserDefaults.standardUserDefaults().objectForKey(currentUserKey) as? NSData
                 if data != nil {
+                    println("data is not nil")
                     var dictionary = NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: nil) as NSDictionary
                     _currentUser = User(dictionary: dictionary)
                 }
@@ -62,12 +65,14 @@ class User: NSObject {
             return _currentUser
         }
         set(user) {
+            println("in current user set")
             _currentUser = user
             
-            if user != nil {
+            if (user != nil) {
                 var data = NSJSONSerialization.dataWithJSONObject(user!.dictionary, options: nil, error: nil)
                 NSUserDefaults.standardUserDefaults().setObject(data, forKey: currentUserKey)
             } else {
+                println("current user setting nil")
                 NSUserDefaults.standardUserDefaults().setObject(nil, forKey: currentUserKey)
             }
             NSUserDefaults.standardUserDefaults().synchronize()

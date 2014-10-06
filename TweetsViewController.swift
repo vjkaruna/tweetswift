@@ -164,7 +164,12 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         } else {
             retweetedSymbol.hidden = true
             retweetedLabel.hidden = true
-            retweetedSymbol.superview!.removeConstraint(nc)
+            for cons in retweetedSymbol.superview!.constraints() {
+                var this_cons = cons as NSLayoutConstraint
+                if (this_cons.constant == -8.0) {
+                   retweetedSymbol.superview!.removeConstraint(this_cons)
+                }
+            }
             //retweetedLabel.removeConstraints(retweetedLabel.constraints())
             //retweetedSymbol.removeConstraints(retweetedSymbol.constraints())
         }
