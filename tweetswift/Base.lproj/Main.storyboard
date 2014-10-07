@@ -347,20 +347,32 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ag4-9W-6TN">
+                                <rect key="frame" x="0.0" y="343" width="600" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="Usm-VG-07b"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="GZF-hr-1nL" kind="embed" id="gvr-zS-ckA"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ijk-sT-XPf" firstAttribute="leading" secondItem="hPy-QT-W53" secondAttribute="leadingMargin" constant="10" id="6Wq-gS-F7l"/>
                             <constraint firstAttribute="centerX" secondItem="BBZ-TY-Ecs" secondAttribute="centerX" id="ADL-Li-Zda"/>
+                            <constraint firstAttribute="width" secondItem="Ag4-9W-6TN" secondAttribute="width" id="EdI-dd-xKc"/>
                             <constraint firstItem="BBZ-TY-Ecs" firstAttribute="top" secondItem="993-ym-aRQ" secondAttribute="bottom" id="GeG-zF-cEN"/>
                             <constraint firstItem="ijk-sT-XPf" firstAttribute="leading" secondItem="07w-8t-KXw" secondAttribute="leading" id="R3R-jl-nXe"/>
                             <constraint firstItem="BBZ-TY-Ecs" firstAttribute="width" secondItem="hPy-QT-W53" secondAttribute="width" id="bBr-PW-q7S"/>
                             <constraint firstItem="07w-8t-KXw" firstAttribute="top" secondItem="ijk-sT-XPf" secondAttribute="bottom" constant="8" id="ct2-pg-lug"/>
+                            <constraint firstItem="Ag4-9W-6TN" firstAttribute="top" secondItem="07w-8t-KXw" secondAttribute="bottom" constant="70" id="eSV-Xg-iDr"/>
                             <constraint firstAttribute="centerX" secondItem="07w-8t-KXw" secondAttribute="centerX" id="ioG-mt-yKa"/>
                             <constraint firstItem="BBZ-TY-Ecs" firstAttribute="top" secondItem="ijk-sT-XPf" secondAttribute="bottom" constant="-180" id="lNk-fr-29O"/>
                             <constraint firstItem="BBZ-TY-Ecs" firstAttribute="leading" secondItem="ijk-sT-XPf" secondAttribute="trailing" constant="-74" id="mFT-yT-QHc"/>
                             <constraint firstItem="BBZ-TY-Ecs" firstAttribute="leading" secondItem="ijk-sT-XPf" secondAttribute="trailing" constant="-256" id="mtu-VM-BZY"/>
                             <constraint firstItem="ijk-sT-XPf" firstAttribute="leading" secondItem="hPy-QT-W53" secondAttribute="leadingMargin" constant="10" id="oN3-mO-d54"/>
+                            <constraint firstAttribute="centerX" secondItem="Ag4-9W-6TN" secondAttribute="centerX" id="v7C-EX-4bJ"/>
                             <constraint firstItem="ijk-sT-XPf" firstAttribute="top" secondItem="BBZ-TY-Ecs" secondAttribute="bottom" constant="-24" id="ztT-sH-BaN"/>
                         </constraints>
                         <variation key="default">
@@ -375,6 +387,7 @@
                     <connections>
                         <outlet property="avatar" destination="ijk-sT-XPf" id="32w-Rm-p8q"/>
                         <outlet property="background" destination="BBZ-TY-Ecs" id="Oy4-Un-lBH"/>
+                        <outlet property="containerView" destination="Ag4-9W-6TN" id="AAC-8P-132"/>
                         <outlet property="usernameLabel" destination="07w-8t-KXw" id="mLJ-CV-UrJ"/>
                     </connections>
                 </viewController>
@@ -725,6 +738,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ven-9i-ik1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="353" y="1048"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="V6C-za-F5y">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="GZF-hr-1nL" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3Ob-J4-dKr"/>
+                        <viewControllerLayoutGuide type="bottom" id="sT2-e3-B3I"/>
+                    </layoutGuides>
+                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Cof-Wc-Jo4">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eOd-cf-9jK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
     <resources>

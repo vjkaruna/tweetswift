@@ -10,11 +10,14 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
+    var sb = UIStoryboard(name: "Main", bundle: nil)
+    
     var user: User?
 
     @IBOutlet weak var background: UIImageView!
     @IBOutlet weak var avatar: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var containerView: UIView!
     
     
     override func viewDidLoad() {
@@ -30,6 +33,15 @@ class ProfileViewController: UIViewController {
         avatar.sd_setImageWithURL(NSURL(string: self.user!.profileImageUrl!))
         usernameLabel.text = self.user!.name
         
+        
+        println("load timeline in profile view")
+        var uvc = sb.instantiateViewControllerWithIdentifier("TweetsViewController") as UIViewController
+        var vc = uvc as TweetsViewController
+        self.addChildViewController(vc)
+        vc.view.autoresizingMask = .FlexibleWidth | .FlexibleHeight
+        vc.view.frame = self.containerView.bounds
+        self.containerView.addSubview(vc.view)
+        vc.didMoveToParentViewController(self)
         
     }
 
