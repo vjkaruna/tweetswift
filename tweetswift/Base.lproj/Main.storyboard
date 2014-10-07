@@ -553,10 +553,10 @@
             </objects>
             <point key="canvasLocation" x="1699" y="380"/>
         </scene>
-        <!--View Controller-->
+        <!--Intro View Controller-->
         <scene sceneID="z3M-EL-2Tv">
             <objects>
-                <viewController id="4uy-ox-jGd" customClass="ViewController" customModule="tweetswift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="4uy-ox-jGd" userLabel="Intro View Controller" customClass="ViewController" customModule="tweetswift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uKa-GH-Jul"/>
                         <viewControllerLayoutGuide type="bottom" id="JTn-lO-iid"/>

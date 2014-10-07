@@ -25,6 +25,7 @@ class User: NSObject {
     var bio: String?
     var followersCount: Int?
     var followingCount: Int?
+    var tweetCount: Int?
     
     
     init(dictionary: NSDictionary) {
@@ -40,6 +41,7 @@ class User: NSObject {
         followersCount = dictionary["followers_count"] as? Int
         followingCount = dictionary["friends_count"] as? Int
         bio = dictionary["description"] as? String
+        tweetCount = dictionary["statuses"] as? Int
     }
     
     class func logout() {

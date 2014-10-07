@@ -32,10 +32,11 @@ class HamburgerViewController: UIViewController {
     @IBAction func swipeGesture(sender: UISwipeGestureRecognizer) {
         println("Swiped")
         if (sender.state == .Ended) {
-            UIView.animateWithDuration(0.35, animations: {
+            UIView.animateWithDuration(0.35, delay:0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.2, options: .CurveEaseIn,
+            animations: {
               self.contentCenterCons.constant = -160
               self.view.layoutIfNeeded()
-            })
+                }, completion: nil)
         }
     }
     @IBAction func profileTouch(sender: AnyObject) {
@@ -60,10 +61,11 @@ class HamburgerViewController: UIViewController {
     */
     
     func closeHamburger() {
-        UIView.animateWithDuration(0.35, animations: {
-            self.contentCenterCons.constant = 0
-            self.view.layoutIfNeeded()
-        })
+            UIView.animateWithDuration(0.35, delay:0, usingSpringWithDamping: 1, initialSpringVelocity: -0.2, options: .CurveEaseOut,
+                animations: {
+                    self.contentCenterCons.constant = 0
+                    self.view.layoutIfNeeded()
+                }, completion: nil)
     }
     
     func loadTimeline() {
