@@ -565,7 +565,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to TweetSwift!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sek-fd-xXE">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="tweetswift" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sek-fd-xXE">
                                 <rect key="frame" x="151" y="121" width="299" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="PFc-s9-lbY"/>
@@ -638,6 +638,15 @@
                                             <action selector="profileTouch:" destination="dVz-Ku-JzC" eventType="touchUpInside" id="HQK-xz-FXg"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" tag="603" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ypb-kr-VPp">
+                                        <rect key="frame" x="44" y="164" width="64" height="30"/>
+                                        <state key="normal" title="Mentions">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="profileTouch:" destination="dVz-Ku-JzC" eventType="touchUpInside" id="P2R-hx-qFg"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" tag="601" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8JG-Kf-7Jx">
                                         <rect key="frame" x="56" y="97" width="44" height="30"/>
                                         <state key="normal" title="Profile">
@@ -654,9 +663,11 @@
                                     <constraint firstItem="nEa-Zo-tJF" firstAttribute="leading" secondItem="PNX-4l-uxV" secondAttribute="leading" id="7VM-SU-U0b"/>
                                     <constraint firstAttribute="centerX" secondItem="nEa-Zo-tJF" secondAttribute="centerX" id="GA5-yb-dc5"/>
                                     <constraint firstItem="nEa-Zo-tJF" firstAttribute="leading" secondItem="8JG-Kf-7Jx" secondAttribute="leading" id="cdp-Cy-EZe"/>
+                                    <constraint firstItem="ypb-kr-VPp" firstAttribute="top" secondItem="PNX-4l-uxV" secondAttribute="bottom" constant="3" id="hKy-ke-Cmi"/>
                                     <constraint firstItem="8JG-Kf-7Jx" firstAttribute="top" secondItem="nEa-Zo-tJF" secondAttribute="bottom" constant="24" id="kSj-Dg-8u1"/>
                                     <constraint firstItem="nEa-Zo-tJF" firstAttribute="top" secondItem="aqc-LH-U7A" secondAttribute="top" constant="53" id="o40-aM-XDe"/>
-                                    <constraint firstItem="PNX-4l-uxV" firstAttribute="top" secondItem="8JG-Kf-7Jx" secondAttribute="bottom" id="wPa-et-PGH"/>
+                                    <constraint firstItem="ypb-kr-VPp" firstAttribute="leading" secondItem="PNX-4l-uxV" secondAttribute="leading" id="oZS-O8-51d"/>
+                                    <constraint firstItem="PNX-4l-uxV" firstAttribute="top" secondItem="8JG-Kf-7Jx" secondAttribute="bottom" constant="3" id="wPa-et-PGH"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uvf-VU-eqr" userLabel="ContentView">

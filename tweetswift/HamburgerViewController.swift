@@ -32,14 +32,19 @@ class HamburgerViewController: UIViewController {
     @IBAction func swipeGesture(sender: UISwipeGestureRecognizer) {
         println("Swiped")
         if (sender.state == .Ended) {
-            contentCenterCons.constant = -160
+            UIView.animateWithDuration(0.35, animations: {
+              self.contentCenterCons.constant = -160
+              self.view.layoutIfNeeded()
+            })
         }
     }
     @IBAction func profileTouch(sender: AnyObject) {
         if (sender.tag == 601) {
             loadProfile()
-        } else {
+        } else if (sender.tag == 602) {
             loadTimeline()
+        } else {
+            loadTimelineOrMentions(true)
         }
     }
     
@@ -55,12 +60,21 @@ class HamburgerViewController: UIViewController {
     */
     
     func closeHamburger() {
-        contentCenterCons.constant = 0
+        UIView.animateWithDuration(0.35, animations: {
+            self.contentCenterCons.constant = 0
+            self.view.layoutIfNeeded()
+        })
     }
     
     func loadTimeline() {
+        loadTimelineOrMentions(false)
+    }
+    
+    func loadTimelineOrMentions(load_mentions: Bool) {
         println("load timeline in content view")
-        var vc = sb.instantiateViewControllerWithIdentifier("TweetsViewController") as UIViewController
+        var uvc = sb.instantiateViewControllerWithIdentifier("TweetsViewController") as UIViewController
+        var vc = uvc as TweetsViewController
+        vc.load_mentions = load_mentions
         var nvc = sb.instantiateViewControllerWithIdentifier("navigationController") as UINavigationController
         nvc.pushViewController(vc, animated: false)
         self.addChildViewController(nvc)

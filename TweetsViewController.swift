@@ -11,6 +11,7 @@ import UIKit
 class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
 
     var tweets: [Tweet]?
+    var load_mentions = false
     
     @IBOutlet weak var tweetsTable: UITableView!
     var pullView: PullToRefreshView!
@@ -18,13 +19,22 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        TwitterClient.sharedInstance.homeTimelineWithParams(nil, completion: { (tweets, error) -> () in
-            self.tweets = tweets
-            self.tweetsTable.reloadData()
-        })
+        if (load_mentions != false) {
+            TwitterClient.sharedInstance.loadMentions({ (tweets, error) -> () in
+                self.tweets = tweets
+                self.tweetsTable.reloadData()
+                self.navigationItem.title = "Mentions"
+            })
+        } else {
+            // Do any additional setup after loading the view.
+            TwitterClient.sharedInstance.homeTimelineWithParams(nil, completion: { (tweets, error) -> () in
+                self.tweets = tweets
+                self.tweetsTable.reloadData()
+                self.navigationItem.title = "Home"
+           })
+        }
         
-        self.navigationItem.title = "Home"
+
         
         var f = CGRectMake(0, 0, self.tweetsTable.bounds.size.width, 1)
         let pullContainer = UIView(frame: f)
