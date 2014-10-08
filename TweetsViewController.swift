@@ -114,6 +114,9 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
+    @IBAction func avatarTouchAction(sender: AnyObject) {
+        self.performSegueWithIdentifier("avatarSegue", sender: sender)
+    }
     /*
     // MARK: - Navigation
 
@@ -196,7 +199,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             if (sourcerow != nil) {
                 dvc.tweet = tweets![sourcerow!]
             }
-        } else {
+        } else if (segue.identifier == "composeSegue")  {
             
             if (sender is UIButton) {
               let cvc = segue.destinationViewController as ComposeController
@@ -204,6 +207,15 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
               var clickedCell = clickedsuper.superview as UITableViewCell!
               var indexPath = self.tweetsTable.indexPathForCell(clickedCell) as NSIndexPath!
               cvc.origTweet = tweets![indexPath.row]
+            }
+        } else {
+            if (sender is UIButton) {
+                let pvc = segue.destinationViewController as ProfileViewController
+                var clickedsuper = (sender as UIButton).superview as UIView!
+                var clickedCell = clickedsuper.superview as UITableViewCell!
+                var indexPath = self.tweetsTable.indexPathForCell(clickedCell) as NSIndexPath!
+                var thisuser = tweets![indexPath.row].user!
+                pvc.user = thisuser
             }
         }
     }

@@ -18,6 +18,11 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var avatar: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var bioLabel: UILabel!
+    @IBOutlet weak var followersLabel: UILabel!
+    @IBOutlet weak var followingLabel: UILabel!
+    @IBOutlet weak var tweetCountLabel: UILabel!
+
     
     
     override func viewDidLoad() {
@@ -31,8 +36,11 @@ class ProfileViewController: UIViewController {
         println("user \(self.user)")
         background.sd_setImageWithURL(NSURL(string: self.user!.profileBackgroundImageUrl!))
         avatar.sd_setImageWithURL(NSURL(string: self.user!.profileImageUrl!))
-        usernameLabel.text = self.user!.name
-        
+        usernameLabel.attributedText = self.user!.userLabelText
+        bioLabel.text = self.user!.bio
+        followersLabel.attributedText = self.user!.followersText
+        followingLabel.attributedText = self.user!.followingText
+        tweetCountLabel.attributedText = self.user!.tweetCountText
         
         println("load timeline in profile view")
         var uvc = sb.instantiateViewControllerWithIdentifier("TweetsViewController") as UIViewController

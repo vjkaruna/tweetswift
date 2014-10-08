@@ -79,4 +79,19 @@ class TweetDetailController: UIViewController {
     }
     */
 
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if (segue.identifier == "composeDetailSegue")  {
+            if (sender is UIButton) {
+                let cvc = segue.destinationViewController as ComposeController
+                cvc.origTweet = self.tweet!
+            }
+        } else {
+            if (sender is UIButton) {
+                let pvc = segue.destinationViewController as ProfileViewController
+                pvc.user = self.tweet!.user!
+            }
+        }
+    }
 }

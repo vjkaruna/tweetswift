@@ -13,6 +13,8 @@ let currentUserKey = "kCurrentUserKey"
 let userDidLoginNotification = "userDidLoginNotification"
 let userDidLogoutNotification = "userDidLogoutNotification"
 let userTimelineNotification = "userTimelineNotification"
+let textFont = [NSFontAttributeName:UIFont(name: "HelveticaNeue", size: 12.0)]
+let boldFont = [NSFontAttributeName:UIFont(name: "HelveticaNeue-Bold", size: 12.0)]
 
 class User: NSObject {
     
@@ -28,6 +30,8 @@ class User: NSObject {
     var tweetCount: Int?
     
     
+
+    
     init(dictionary: NSDictionary) {
         self.dictionary = dictionary
         
@@ -41,7 +45,7 @@ class User: NSObject {
         followersCount = dictionary["followers_count"] as? Int
         followingCount = dictionary["friends_count"] as? Int
         bio = dictionary["description"] as? String
-        tweetCount = dictionary["statuses"] as? Int
+        tweetCount = dictionary["statuses_count"] as? Int
     }
     
     class func logout() {
@@ -80,4 +84,38 @@ class User: NSObject {
             NSUserDefaults.standardUserDefaults().synchronize()
         }
     }
+    
+    lazy var userLabelText: NSMutableAttributedString = {
+        let descText = NSMutableAttributedString()
+        
+        descText.appendAttributedString(NSAttributedString(string: "\(self.name!)",attributes:boldFont))
+        descText.appendAttributedString(NSAttributedString(string: " @\(self.screenname!)",attributes:textFont))
+        return descText
+    }()
+    
+    lazy var followingText: NSMutableAttributedString = {
+        let descText = NSMutableAttributedString()
+        
+        descText.appendAttributedString(NSAttributedString(string: "\(self.followingCount!)",attributes:boldFont))
+        descText.appendAttributedString(NSAttributedString(string: " Following",attributes:textFont))
+        return descText
+    }()
+    
+    lazy var followersText: NSMutableAttributedString = {
+        let descText = NSMutableAttributedString()
+        
+        descText.appendAttributedString(NSAttributedString(string: "\(self.followersCount!)",attributes:boldFont))
+        descText.appendAttributedString(NSAttributedString(string: " Followers",attributes:textFont))
+        return descText
+    }()
+    
+    
+    lazy var tweetCountText: NSMutableAttributedString = {
+        let descText = NSMutableAttributedString()
+        
+        descText.appendAttributedString(NSAttributedString(string: "\(self.tweetCount!)",attributes:boldFont))
+        descText.appendAttributedString(NSAttributedString(string: " Tweets",attributes:textFont))
+        return descText
+    }()
+    
 }

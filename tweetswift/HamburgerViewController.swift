@@ -15,12 +15,20 @@ class HamburgerViewController: UIViewController {
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var contentCenterCons: NSLayoutConstraint!
     
+    @IBOutlet weak var usernameView: UILabel!
+    @IBOutlet weak var avatarView: UIImageView!
+    @IBOutlet weak var backgroundView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
 
         loadTimeline()
+        var cu = User.currentUser
+        usernameView.text = cu!.screenname
+        backgroundView.sd_setImageWithURL(NSURL(string: cu!.profileBackgroundImageUrl!))
+        avatarView.sd_setImageWithURL(NSURL(string: cu!.profileImageUrl!))
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,7 +42,7 @@ class HamburgerViewController: UIViewController {
         if (sender.state == .Ended) {
             UIView.animateWithDuration(0.35, delay:0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.2, options: .CurveEaseIn,
             animations: {
-              self.contentCenterCons.constant = -160
+              self.contentCenterCons.constant = -200
               self.view.layoutIfNeeded()
                 }, completion: nil)
         }
@@ -80,6 +88,7 @@ class HamburgerViewController: UIViewController {
         var nvc = sb.instantiateViewControllerWithIdentifier("navigationController") as UINavigationController
         nvc.pushViewController(vc, animated: false)
         self.addChildViewController(nvc)
+        nvc.view.autoresizingMask = .FlexibleWidth | .FlexibleHeight
         nvc.view.frame = self.contentView.bounds
         self.contentView.addSubview(nvc.view)
         nvc.didMoveToParentViewController(self)
@@ -95,6 +104,7 @@ class HamburgerViewController: UIViewController {
         var nvc = sb.instantiateViewControllerWithIdentifier("navigationController") as UINavigationController
         nvc.pushViewController(vc, animated: false)
         self.addChildViewController(nvc)
+        nvc.view.autoresizingMask = .FlexibleWidth | .FlexibleHeight
         nvc.view.frame = self.contentView.bounds
         self.contentView.addSubview(nvc.view)
         nvc.didMoveToParentViewController(self)

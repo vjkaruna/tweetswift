@@ -124,11 +124,12 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
     func showError(error: String) {
         var contentView = UIView()
         contentView.backgroundColor = UIColor.whiteColor()
-        contentView.frame = CGRectMake(0, 0, 200, 200)
+        contentView.frame = CGRectMake(0, 0, 200, 300)
         var myLabel = UILabel()
         myLabel.numberOfLines = 0
-        myLabel.frame = CGRectMake(0, 0, 200, 200)
+        myLabel.frame = CGRectMake(5, 5, 195, 295)
         myLabel.text = error
+        myLabel.font = UIFont(name: "HelveticaNeue", size: 12.0)
         contentView.addSubview(myLabel)
         
         
