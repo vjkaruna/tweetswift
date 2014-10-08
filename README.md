@@ -5,7 +5,6 @@ Client for Twitter in Swift, for Codepath, with Profiles.
 
 (To change Twitter app Consumer Key / Secret, modify the top of tweetswift/models/TwitterClient.swift)
 
-![Screenshot 1](https://raw.githubusercontent.com/vjkaruna/tweetswift/profiles/profile1.gif)
 ![Screenshot 2](https://raw.githubusercontent.com/vjkaruna/tweetswift/profiles/profile2.gif)
 
 Time spent: approx. 12 hours
