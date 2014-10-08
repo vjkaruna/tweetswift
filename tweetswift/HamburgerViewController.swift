@@ -26,7 +26,7 @@ class HamburgerViewController: UIViewController {
 
         loadTimeline()
         var cu = User.currentUser
-        usernameView.text = cu!.screenname
+        usernameView.text = "@\(cu!.screenname!)"
         backgroundView.sd_setImageWithURL(NSURL(string: cu!.profileBackgroundImageUrl!))
         avatarView.sd_setImageWithURL(NSURL(string: cu!.profileImageUrl!))
     }
@@ -47,13 +47,23 @@ class HamburgerViewController: UIViewController {
                 }, completion: nil)
         }
     }
+    
     @IBAction func profileTouch(sender: AnyObject) {
         if (sender.tag == 601) {
             loadProfile()
         } else if (sender.tag == 602) {
             loadTimeline()
-        } else {
+        } else if (sender.tag == 603) {
             loadTimelineOrMentions(true)
+        } else {
+            User.logout()
+        }
+    }
+    
+    @IBAction func swipeGestureLeft(sender: UISwipeGestureRecognizer) {
+        println("Swiped left")
+        if (sender.state == .Ended) {
+            closeHamburger()
         }
     }
     

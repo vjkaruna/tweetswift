@@ -74,6 +74,16 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
         })
     }
     
+    func userTimeline(screenname: String, completion: (tweets: [Tweet]?, error: NSError?) -> ()) {
+        GET("1.1/statuses/user_timeline.json", parameters: ["screen_name":screenname], success: {
+            (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+            var tweets = Tweet.tweetsWithArray(response as [NSDictionary])
+            completion(tweets: tweets, error: nil)
+            }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                self.showError("Network error: \(operation)")
+        })
+    }
+    
     func loadMentions(completion: (tweets: [Tweet]?, error: NSError?) -> ()) {
         GET("1.1/statuses/mentions_timeline.json", parameters: NSDictionary(), success: {
             (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in

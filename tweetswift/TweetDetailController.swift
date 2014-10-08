@@ -60,7 +60,7 @@ class TweetDetailController: UIViewController {
         /** let replyBtn = self.navigationController?.navigationBar.viewWithTag(901) as UIBarButtonItem
         replyBtn.title = "Reply"
         **/
-        
+        self.navigationItem.title = "Tweet"
     }
 
     override func didReceiveMemoryWarning() {

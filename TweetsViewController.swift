@@ -12,21 +12,29 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     var tweets: [Tweet]?
     var load_mentions = false
+    var profileUser: User?
     
     @IBOutlet weak var tweetsTable: UITableView!
     var pullView: PullToRefreshView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        // Do any additional setup after loading the view.
+        
         if (load_mentions != false) {
             TwitterClient.sharedInstance.loadMentions({ (tweets, error) -> () in
                 self.tweets = tweets
                 self.tweetsTable.reloadData()
                 self.navigationItem.title = "Mentions"
             })
+        } else if (profileUser != nil) {
+            TwitterClient.sharedInstance.userTimeline(self.profileUser!.screenname!, completion: { (tweets, error) -> () in
+                self.tweets = tweets
+                self.tweetsTable.reloadData()
+                self.navigationItem.title = "Tweets"
+            })
         } else {
-            // Do any additional setup after loading the view.
+
             TwitterClient.sharedInstance.homeTimelineWithParams(nil, completion: { (tweets, error) -> () in
                 self.tweets = tweets
                 self.tweetsTable.reloadData()

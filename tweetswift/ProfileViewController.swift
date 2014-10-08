@@ -45,11 +45,14 @@ class ProfileViewController: UIViewController {
         println("load timeline in profile view")
         var uvc = sb.instantiateViewControllerWithIdentifier("TweetsViewController") as UIViewController
         var vc = uvc as TweetsViewController
+        vc.profileUser = self.user
         self.addChildViewController(vc)
         vc.view.autoresizingMask = .FlexibleWidth | .FlexibleHeight
         vc.view.frame = self.containerView.bounds
         self.containerView.addSubview(vc.view)
         vc.didMoveToParentViewController(self)
+        
+        self.navigationItem.title = "Profile"
         
     }
 

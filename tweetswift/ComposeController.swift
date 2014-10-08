@@ -40,6 +40,7 @@ class ComposeController: UIViewController {
             composeText.text = "@\(origTweet!.user!.screenname) \(origTweet!.text)"
             composeLabel.text = "Reply to \(origTweet!.user!.name!)"
         }
+        self.navigationItem.title = "Compose"
     }
 
     override func didReceiveMemoryWarning() {

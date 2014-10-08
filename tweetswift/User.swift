@@ -41,7 +41,11 @@ class User: NSObject {
         screenname = dictionary["screen_name"] as? String
         profileImageUrl = dictionary["profile_image_url"] as? String
         tagline = dictionary["description"] as? String
-        profileBackgroundImageUrl = dictionary["profile_background_image_url"] as? String
+        if (dictionary["profile_banner_url"] != nil) {
+            profileBackgroundImageUrl = dictionary["profile_banner_url"] as? String
+        } else {
+            profileBackgroundImageUrl = dictionary["profile_background_image_url"] as? String
+        }
         followersCount = dictionary["followers_count"] as? Int
         followingCount = dictionary["friends_count"] as? Int
         bio = dictionary["description"] as? String
