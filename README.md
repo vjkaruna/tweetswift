@@ -1,11 +1,12 @@
 Tweetswift
 ===========
 
-Client for Twitter in Swift, for Codepath.
+Client for Twitter in Swift, for Codepath, with Profiles.
 
 (To change Twitter app Consumer Key / Secret, modify the top of tweetswift/models/TwitterClient.swift)
 
-![Screenshot](https://raw.githubusercontent.com/vjkaruna/tweetswift/master/tweetswift.gif)
+![Screenshot 1](https://raw.githubusercontent.com/vjkaruna/tweetswift/profiles/profile1.gif)
+![Screenshot 2](https://raw.githubusercontent.com/vjkaruna/tweetswift/profiles/profile1.gif)
 
 Time spent: approx. 12 hours
 
@@ -20,9 +21,8 @@ Used a separate xib for PullToRefresh in the table header.
 Required Tasks
 ============
 
-- Sign in with OAuth.
-- Pull to Refresh.
-- Compose and reply to tweets.
-- Tweet details page.
-- Favoriting and native retweeting.
-- User details saved between instances.
+- Tray with spring animation.
+- Gesture recognizer for opening and closing tray.
+- Profile pages with bio and recent tweets.
+- Mentions page.
+- Tap on avatars to bring up profile.
